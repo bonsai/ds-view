@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ds-view/render_cli.py — CLI display of ds-core insights + metrics.
+"""ds-view/render_cli.py — CLI display of ds-insighter insights + metrics.
 
 Reads: input/insights.jsonl, input/metrics.jsonl
 """
@@ -64,6 +64,6 @@ def render_cli(input_dir):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--input", default="../ds-core/output")
+    ap.add_argument("--input", default="../ds-insighter/output")
     args = ap.parse_args()
     render_cli(args.input)

@@ -1,10 +1,10 @@
 # ds-view
 
-Display layer (component 3/3 of ds-dashboard). Renders ds-core JSONL output.
+Display layer (component 3/3 of ds-dashboard). Renders ds-insighter JSONL output.
 
 ## Interface
 
-**Input**: `ds-core/output/` (or any directory with insights.jsonl + metrics.jsonl)
+**Input**: `ds-insighter/output/` (or any directory with insights.jsonl + metrics.jsonl)
 
 **Output**:
 ```
@@ -23,12 +23,12 @@ ds-view serve    # local HTTP server (port 8080)
 ## Example
 
 ```bash
-# After ds-core produces output/
-ds-view cli --input ../ds-core/output
-ds-view html --input ../ds-core/output --output ./output/dashboard.html
+# After ds-insighter produces output/
+ds-view cli --input ../ds-insighter/output
+ds-view html --input ../ds-insighter/output --output ./output/dashboard.html
 DS_PORT=3000 ds-view serve
 ```
 
 ## Related
 
-- **ds-core** → provides insights.jsonl + metrics.jsonl
+- **ds-insighter** → provides insights.jsonl + metrics.jsonl

@@ -38,7 +38,7 @@ th {{ color: #818cf8; }}
 </head>
 <body>
 <h1>🔭 ds-view dashboard</h1>
-<p class="meta">Generated: {generated_at} | Source: ds-core output/</p>
+<p class="meta">Generated: {generated_at} | Source: ds-insighter output/</p>
 
 <h2>📊 Global Metrics</h2>
 <div class="metrics">
@@ -124,7 +124,7 @@ def render(input_dir, output_file):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--input", default="../ds-core/output")
+    ap.add_argument("--input", default="../ds-insighter/output")
     ap.add_argument("--output", default="./output/dashboard.html")
     args = ap.parse_args()
     render(args.input, args.output)
