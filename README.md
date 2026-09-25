@@ -1,6 +1,6 @@
 # ds-view
 
-Display layer (component 3/3 of ds-dashboard). Renders ds-insighter JSONL output.
+Display layer (component 3/3 of kankyou-hub). Renders ds-insighter JSONL output.
 
 ## Interface
 

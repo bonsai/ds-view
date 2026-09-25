@@ -2,14 +2,14 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-INPUT_DIR="${DS_INPUT_DIR:-$ROOT/../ds-core/output}"
+INPUT_DIR="${DS_INPUT_DIR:-$ROOT/../ds-insighter/output}"
 OUT_DIR="${DS_OUT_DIR:-$ROOT/output}"
 
 _usage() {
   cat <<EOF
-ds-view — Display layer (ds-dashboard component 3/3)
+ds-view — Display layer (kankyou-hub component 3/3)
 
-Reads ds-core JSONL output, renders dashboard.
+Reads ds-insighter JSONL output, renders dashboard.
 
 Usage: ds-view <command> [args]
 
@@ -19,7 +19,7 @@ Render
   ds-view serve              → local HTTP server
 
 Environment:
-  DS_INPUT_DIR=path          ds-core output directory
+  DS_INPUT_DIR=path          ds-insighter output directory
   DS_OUT_DIR=path            output directory
   DS_PORT=port               server port (default: 8080)
 EOF
