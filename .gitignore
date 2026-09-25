@@ -1,0 +1,4 @@
+# ds-view is display layer — generated output should not be committed
+output/
+__pycache__/
+*.pyc

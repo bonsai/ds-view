@@ -1,0 +1,50 @@
+#!/bin/bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+INPUT_DIR="${DS_INPUT_DIR:-$ROOT/../ds-core/output}"
+OUT_DIR="${DS_OUT_DIR:-$ROOT/output}"
+
+_usage() {
+  cat <<EOF
+ds-view — Display layer (ds-dashboard component 3/3)
+
+Reads ds-core JSONL output, renders dashboard.
+
+Usage: ds-view <command> [args]
+
+Render
+  ds-view html               → output/dashboard.html
+  ds-view cli                → terminal display
+  ds-view serve              → local HTTP server
+
+Environment:
+  DS_INPUT_DIR=path          ds-core output directory
+  DS_OUT_DIR=path            output directory
+  DS_PORT=port               server port (default: 8080)
+EOF
+}
+
+_cmd_html() {
+  python3 "$ROOT/scripts/render_html.py" --input "$INPUT_DIR" --output "$OUT_DIR/dashboard.html"
+}
+
+_cmd_cli() {
+  python3 "$ROOT/scripts/render_cli.py" --input "$INPUT_DIR"
+}
+
+_cmd_serve() {
+  local port="${DS_PORT:-8080}"
+  echo "Serving $OUT_DIR at http://localhost:$port/"
+  echo "Ctrl+C to stop"
+  cd "$OUT_DIR" && python3 -m http.server "$port"
+}
+
+CMD="${1:-help}"; shift || true
+case "$CMD" in
+  html)     _cmd_html ;;
+  cli)      _cmd_cli ;;
+  serve)    _cmd_serve ;;
+  help|--help|-h) _usage ;;
+  *) echo "Unknown: $CMD"; _usage; exit 1 ;;
+esac
